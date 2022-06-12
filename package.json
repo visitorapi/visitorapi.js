@@ -28,5 +28,8 @@
   "bugs": {
     "url": "https://github.com/visitorapi/visitorapi.js/issues"
   },
-  "homepage": "https://github.com/visitorapi/visitorapi.js#readme"
+  "homepage": "https://github.com/visitorapi/visitorapi.js#readme",
+  "dependencies": {
+    "axios": "^0.27.2"
+  }
 }
