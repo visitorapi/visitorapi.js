@@ -1,6 +1,6 @@
 {
   "name": "visitorapi",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Detect website visitor IP, location, currencies, languages and device information",
   "main": "index.js",
   "scripts": {
@@ -28,7 +28,7 @@
   "bugs": {
     "url": "https://github.com/visitorapi/visitorapi.js/issues"
   },
-  "homepage": "https://github.com/visitorapi/visitorapi.js#readme",
+  "homepage": "https://www.visitorapi.com",
   "dependencies": {
     "axios": "^0.27.2"
   }
