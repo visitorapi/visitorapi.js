@@ -6,7 +6,7 @@ function VisitorAPI(projectId, successHandler, failureHandler){
         url: 'https://api.visitorapi.com/api/?pid='+projectId,
     }).then(function(response){
         if(typeof(successHandler) === 'function'){
-            successHandler(response);
+            successHandler(response.data.data);
         }
     }).catch(function(error){
         if(typeof(failureHandler) === 'function'){
