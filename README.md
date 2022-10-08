@@ -17,7 +17,23 @@ using npm
 npm install visitorapi
 ```
 
-## Example
+## Promise Example
+Since version 2.0.0, VisitorAPI supports promise as well. See the example below.
+
+```
+import VisitorAPI from "visitorapi";
+
+
+VisitorAPI("<my project id>").then(data => {
+    console.log(data);
+    setCountry(data.countryCode);
+}).catch(error => {
+    console.log(error);
+});
+
+```
+
+## Callback Example
 
 ```
 import VisitorAPI from "visitorapi";
