@@ -2,3 +2,5 @@ test_script.js
 test
 node_modules
 package-lock.json
+# Worktrees for isolated feature work — never tracked.
+.worktree/
