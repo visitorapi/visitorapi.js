@@ -1,6 +1,6 @@
 {
   "name": "visitorapi",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Detect website visitor IP, location, currencies, languages and device information",
   "main": "index.js",
   "scripts": {
@@ -30,6 +30,6 @@
   },
   "homepage": "https://www.visitorapi.com",
   "dependencies": {
-    "axios": "^0.27.2"
+    "axios": "^1.15.1"
   }
 }
