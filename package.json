@@ -1,6 +1,6 @@
 {
   "name": "visitorapi",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Detect website visitor IP, location, currencies, languages and device information",
   "main": "index.js",
   "scripts": {
