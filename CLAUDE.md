@@ -49,7 +49,9 @@ third args are `undefined`.
 
 ## Dependencies
 
-- `axios ^0.27.2` (the only runtime dependency)
+- **None.** Uses the native `fetch` API. Previously depended on `axios`
+  (bumped `^0.27.2` -> `^1.15.1` for a CVE fix, then dropped entirely),
+  see "Editing rules" below for why.
 - No dev dependencies, no test framework
 
 ## Publishing
@@ -68,6 +70,25 @@ name has the `.js` suffix but the published package does not.
   must keep working — `react-country-state-fields` and the GTM
   template depend on this SDK and would break if the signature
   changed.
+- **Don't reintroduce axios (or any HTTP client library) without
+  checking bundler compatibility first.** axios >=1.x's `package.json`
+  "exports" map only offers `.cjs` entry points for `require()` (both
+  the "default" and "browser" conditions), and there's no sanctioned
+  `.js`-extension subpath to deep-import around it. Create React App's
+  Webpack config (react-scripts 5, and likely other older/frozen
+  bundler configs) only runs `babel-loader` on
+  `/\.(js|mjs|jsx|ts|tsx)$/` — `.cjs` isn't in that list — so
+  `require("axios")` silently resolves to a static asset URL string
+  instead of the module in that context, breaking auto-detection with
+  no error, just silently empty fields downstream. This is why the
+  SDK uses native `fetch` instead: it sidesteps the entire class of
+  bundler/package-export-resolution problem, and fetch is supported in
+  every browser this package targets (and Node 18+, for direct/test
+  usage). If a future dependency is ever needed, verify it works
+  through an actual bundled consumer app (e.g. the
+  `react-country-state-fields` demo), not just plain Node, plain
+  `require()`/`node -e` can succeed while bundled usage silently
+  breaks.
 - The GTM template loads a CDN-hosted build at
   `https://cdn.visitorapi.com/visitor-api.js`. If you change the
   entry point or module format, that CDN copy needs to be rebuilt
